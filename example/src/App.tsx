@@ -1,18 +1,17 @@
 import * as React from 'react';
-
 import { StyleSheet, View, Text } from 'react-native';
-import DebounceTouchable from 'react-native-debounce-touchable';
+import { DebouncedTouchableWithoutFeedback } from '../../src';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    DebounceTouchable.multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <DebouncedTouchableWithoutFeedback
+        onPress={() => {
+          console.warn('aaa');
+        }}
+      >
+        <Text>点击</Text>
+      </DebouncedTouchableWithoutFeedback>
     </View>
   );
 }
