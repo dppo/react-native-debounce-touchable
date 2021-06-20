@@ -1,24 +1,36 @@
 import React from 'react';
-import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import {
+  TouchableOpacity as RNTouchableOpacity,
+  TouchableWithoutFeedback as RNTouchableWithoutFeedback,
+  TouchableHighlight as RNTouchableHighlight,
+  TouchableNativeFeedback as RNTouchableNativeFeedback,
+  GestureResponderEvent,
+} from 'react-native';
 import { useDebouncedCallback } from 'use-debounce';
 
-const withDebouncedTouchable =
-  (WrappedComponent: React.ComponentType) => (props) => {
-    const clickHandler = useDebouncedCallback(
-      () => {
-        if (props.onPress) {
-          props.onPress();
-        }
-      },
-      300,
-      { leading: true, trailing: false }
-    );
-    return <WrappedComponent {...props} onPress={clickHandler} />;
-  };
+type HOC<InjectProps> = <Props>(
+  Component: React.ComponentType<Props & InjectProps>
+) => React.ComponentType<Props>;
 
-export const DebouncedTouchableWithoutFeedback = withDebouncedTouchable(
-  TouchableWithoutFeedback
+const withDebouncedTouchable: HOC<{}> = (WrappedComponent) => (props: any) => {
+  const clickHandler = useDebouncedCallback(
+    (event: GestureResponderEvent) => {
+      if (props.onPress) {
+        props.onPress(event);
+      }
+    },
+    300,
+    { leading: true, trailing: false }
+  );
+
+  return <WrappedComponent {...props} onPress={clickHandler} />;
+};
+
+export const TouchableWithoutFeedback = withDebouncedTouchable(
+  RNTouchableWithoutFeedback
 );
-
-export const DebouncedTouchableOpacity =
-  withDebouncedTouchable(TouchableOpacity);
+export const TouchableOpacity = withDebouncedTouchable(RNTouchableOpacity);
+export const TouchableHighlight = withDebouncedTouchable(RNTouchableHighlight);
+export const TouchableNativeFeedback = withDebouncedTouchable(
+  RNTouchableNativeFeedback
+);
