@@ -31,11 +31,7 @@
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
   },
-  "keywords": [
-    "react-native",
-    "ios",
-    "android"
-  ],
+  "keywords": ["react-native", "ios", "android"],
   "repository": "https://github.com/dppo/react-native-debounce-touchable",
   "author": "dppo <xiaogao235@gmail.com> (https://github.com/dppo)",
   "license": "MIT",
@@ -45,6 +41,9 @@
   "homepage": "https://github.com/dppo/react-native-debounce-touchable#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "use-debounce": "^6.0.1"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
@@ -65,8 +64,7 @@
     "react-native": "0.63.4",
     "react-native-builder-bob": "^0.18.0",
     "release-it": "^14.2.2",
-    "typescript": "^4.1.3",
-    "use-debounce": "^6.0.1"
+    "typescript": "^4.1.3"
   },
   "peerDependencies": {
     "react": "*",
@@ -87,9 +85,7 @@
     }
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "extends": ["@commitlint/config-conventional"]
   },
   "release-it": {
     "git": {
@@ -110,10 +106,7 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": [
-      "@react-native-community",
-      "prettier"
-    ],
+    "extends": ["@react-native-community", "prettier"],
     "rules": {
       "prettier/prettier": [
         "error",
@@ -127,10 +120,7 @@
       ]
     }
   },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
+  "eslintIgnore": ["node_modules/", "lib/"],
   "prettier": {
     "quoteProps": "consistent",
     "singleQuote": true,
