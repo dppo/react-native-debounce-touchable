@@ -1,5 +1,5 @@
 {
-  "name": "react-native-debounce-touchable",
+  "name": "@dppo/react-native-debounce-touchable",
   "version": "0.1.0",
   "description": "use-debounce to react-native touchable components",
   "main": "lib/commonjs/index",
