@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   TouchableOpacity as RNTouchableOpacity,
   TouchableWithoutFeedback as RNTouchableWithoutFeedback,
   TouchableHighlight as RNTouchableHighlight,
   TouchableNativeFeedback as RNTouchableNativeFeedback,
   GestureResponderEvent,
-} from 'react-native';
-import { useDebouncedCallback } from 'use-debounce';
+} from "react-native";
+import { useDebouncedCallback } from "use-debounce";
 
 type HOC<InjectProps> = <Props>(
   Component: React.ComponentType<Props & InjectProps>
@@ -19,7 +19,7 @@ const withDebouncedTouchable: HOC<{}> = (WrappedComponent) => (props: any) => {
         props.onPress(event);
       }
     },
-    300,
+    props.wait ?? 600,
     { leading: true, trailing: false }
   );
 
